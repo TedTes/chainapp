@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+   <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <label id="timer" class="timer"></label>
+            <h4>word chain game</h4>
+            <h3><%=name%></h3>
+        </header>
+        <ul id="online-users" class="online-users"></ul>
+    
+        <form id="chain-form" class="chain-form">
+            <label id="word" ></label>
+            <input type="text" name="inputWord" required autofocus/>
+            <button >Chain</button>
+        </form>
+        <div class="alert-msg" id="alert-msg"></div>
+    </div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="./script.js"></script>
+
+</body>
+</html>
