@@ -7,7 +7,6 @@ async function createUser(name){
 }
 
 async function updateStatus(name,word){
-  console.log(words);
 if(words.indexOf(word)===-1) return 'INVALID_WORD'
 
 const status=await Status.findOne({})
@@ -24,8 +23,34 @@ else{
   return word;
 }
 }
+
+async function getOnlineUsers(){
+  const users=await User.find({});
+  return users;
+}
+async function getCurrentWord(name){
+const status=await Status.findOne({})
+if(status!==null)return status.currWord;
+const word=words[Math.floor(Math.random()*words.length)];
+return updateStatus(name,word);
+}
+async function resetScore(name){
+await User.updateOne({'name':name},{$set:{score:0}})
+}
+async function resetGame(){
+  await User.deleteMany({});
+  await Status.deleteMany({})
+}
+async function removeUser(name){
+  return await User.deleteOne({'name':name})
+}
 module.exports={
     createUser,
-    updateStatus
+    updateStatus,
+    removeUser,
+    resetScore,
+    resetGame,
+    getOnlineUsers,
+    getCurrentWord
 
  } 
